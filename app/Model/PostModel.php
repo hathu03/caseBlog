@@ -8,22 +8,24 @@ class PostModel extends BaseModel
 
     public function addPost($request)
     {
-        $sql = "insert into $this->table (title,content,post_time) values (?,?,?)";
+        $sql = "insert into $this->table (title,content,post_time, image) values (?,?,?,?)";
         $stmt = $this->dbConnect->prepare($sql);
         $stmt->bindParam(1,$request["title"]);
         $stmt->bindParam(2,$request["content"]);
         $stmt->bindParam(3,$request["post_time"]);
+        $stmt->bindParam(4,$request["image"]);
         $stmt->execute();
     }
 
     public function updatePost($request)
     {
-        $sql = "update $this->table set title=? ,content=?, post_time=? where id=?";
+        $sql = "update $this->table set title=? ,content=?, post_time=?, image=? where id=?";
         $stmt = $this->dbConnect->prepare($sql);
         $stmt->bindParam(1,$request["title"]);
         $stmt->bindParam(2,$request["content"]);
         $stmt->bindParam(3,$request["post_time"]);
-        $stmt->bindParam(4,$request["id"]);
+        $stmt->bindParam(4,$request["image"]);
+        $stmt->bindParam(5,$request["id"]);
         $stmt->execute();
     }
 

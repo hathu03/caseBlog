@@ -8,10 +8,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+
+    <link rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css">
 </head>
 <body class="container">
-<a href="index.php?page=user-list">Users</a>
-<a href="index.php?page=post-list">Post</a>
 <?php
 session_start();
 
@@ -75,6 +76,9 @@ switch ($page) {
         $authController->logOut();
         break;
     default:
+        if (isset($_REQUEST["search"])) {
+            $userController->search($_REQUEST);
+        }
         header("location:index.php?page=login");
 }
 

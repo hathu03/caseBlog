@@ -21,6 +21,17 @@ class PostController
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             include_once "app/View/post/create.php";
         } else {
+            if (isset($_FILES["fileUpToLoad"])) {
+                $targetFolder = "upload/";
+                $nameImage = time() . basename($_FILES["fileUpToLoad"]["name"]);
+                $targetFile = $targetFolder . $nameImage;
+                if (move_uploaded_file($_FILES["fileUpToLoad"]["tmp_name"], $targetFile)) {
+                    echo "Upload successfull";
+                    $_REQUEST["image"] = $nameImage;
+                } else {
+                    echo "Upload Failure";
+                }
+            }
             try {
                 $this->postModel->addPost($_REQUEST);
                 header("location:index.php?page=post-list");
@@ -52,6 +63,20 @@ class PostController
     public function updatePost()
     {
         if (isset($_REQUEST['id'])){
+            $post = $this->postModel->getById($_REQUEST["id"]);
+            $_REQUEST["image"] = $post->image;
+            if (isset($_FILES["fileUpToLoad"])) {
+                $targetFolder = "upload/";
+                $nameImage = time() . basename($_FILES["fileUpToLoad"]["name"]);
+                $targetFile = $targetFolder . $nameImage;
+                if (move_uploaded_file($_FILES["fileUpToLoad"]["tmp_name"], $targetFile)) {
+                    echo "Upload successfull";
+                    $_REQUEST["image"] = $nameImage;
+                } else {
+                    echo "Upload failure";
+                }
+            }
+
             $this->postModel->updatePost($_REQUEST);
             header("location:index.php?page=post-list");
         }

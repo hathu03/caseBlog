@@ -1,7 +1,10 @@
 <h2>Detail</h2>
-<a href="index.php?page=user-list">Tro lai</a>
-<table border="1px">
-    <thead>
+<button class="btn btn-info" style="margin-bottom: 10px">
+    <a style="text-decoration: none; color: white" href="index.php?page=user-list">Back</a>
+</button>
+
+<table class="table">
+    <thead class="thead-dark">
     <tr>
         <th>ID</th>
         <th>Name</th>

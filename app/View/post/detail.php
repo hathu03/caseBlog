@@ -1,7 +1,10 @@
 <h2>Detail</h2>
-<a href="index.php?page=post-list">Quqy lai</a>
-<table border="1px">
-    <thead>
+<button style="margin-bottom: 10px" class="btn btn-info">
+    <a style="text-decoration: none; color: white" href="index.php?page=post-list">Back to List</a>
+</button>
+
+<table class="table">
+    <thead class="thead-dark">
     <tr>
         <th>Id</th>
         <th>Title</th>

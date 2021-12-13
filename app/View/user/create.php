@@ -1,5 +1,5 @@
 <h2>Thêm Mới</h2>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <input class="form-control" type="text" name="name" placeholder="Nhap ten">
     <input class="form-control" type="email" name="email" placeholder="Nhap Email">
     <input class="form-control" type="text" name="password" placeholder="Nhap password">
@@ -12,6 +12,7 @@
         <option value="Hai Duong">Hai Duong</option>
         <option value="Da Nang">Da Nang</option>
     </select>
+    <input class="form-control" type="file" name="fileUpToLoad" placeholder="Image Link">
     <button class="btn btn-primary" type="submit">Add New User</button>
     <a type="button" class="btn btn-danger" href="index.php?page=user-list">
         <button type="button">Back</button></a>
